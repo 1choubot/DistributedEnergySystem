@@ -50,11 +50,19 @@
             <GradientStop Color="#059669" Offset="1"/>
         </LinearGradientBrush>
 
-        <!-- 状态栏背景 -->
+        <!-- 状态栏背景 - 增强层次感 -->
         <LinearGradientBrush x:Key="StatusBarBackground" StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#1F2937" Offset="0"/>
-            <GradientStop Color="#111827" Offset="1"/>
+            <GradientStop Color="#2D3748" Offset="0"/>
+            <GradientStop Color="#1A202C" Offset="0.5"/>
+            <GradientStop Color="#0F1419" Offset="1"/>
         </LinearGradientBrush>
+
+        <!-- 状态栏玻璃态效果 -->
+        <Style x:Key="StatusBarGlassEffect" TargetType="Border">
+            <Setter Property="Background" Value="#2D3748"/>
+            <Setter Property="BorderBrush" Value="#33FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0,0.5,0,0"/>
+        </Style>
 
         <!-- 迷你趋势图样式 -->
         <Style x:Key="MiniTrendChart" TargetType="Border">
@@ -348,24 +356,38 @@
         </Style>
 
         <!-- 按钮样式定义 -->
+            <!-- 状态图标样式 - 适配32x32图标 -->
         <Style x:Key="StatusButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="60"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="8"
+                                CornerRadius="12"
                                 Padding="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#1F2937"/>
-                            </Trigger>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                        To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                        To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -440,6 +462,99 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- 蓝牙图标 - 优化设计 -->
+        <Canvas x:Key="BluetoothIcon" Width="32" Height="32">
+            <!-- 蓝牙logo背景圆 -->
+            <Ellipse Stroke="#60A5FA" StrokeThickness="2" Fill="#60A5FA" Opacity="0.1" Width="28" Height="28" Canvas.Left="2" Canvas.Top="2"/>
+            <!-- 蓝牙logo主体 - 更清晰的线条 -->
+            <Path Stroke="#60A5FA" StrokeThickness="2.5" Fill="Transparent" StrokeLineJoin="Round">
+                <Path.Data>
+                    <PathGeometry>
+                        <!-- 垂直主线 -->
+                        M16 6 L16 26
+                        <!-- 左上斜线 -->
+                        M11 11 L16 6
+                        <!-- 左下斜线 -->
+                        M11 21 L16 26
+                        <!-- 右上斜线 -->
+                        M21 11 L16 6
+                        <!-- 右中横线 -->
+                        M21 16 L11 16
+                        <!-- 右下斜线 -->
+                        M21 21 L16 26
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!-- 连接点装饰 -->
+            <Ellipse Fill="#60A5FA" Width="4" Height="4" Canvas.Left="14" Canvas.Top="14"/>
+        </Canvas>
+
+        <!-- 警报声音图标 - 简化喇叭 -->
+        <Canvas x:Key="AlarmSoundIcon" Width="32" Height="32">
+            <!-- 喇叭主体 -->
+            <Path Stroke="#F59E0B" StrokeThickness="3" Fill="#F59E0B">
+                <Path.Data>
+                    <PathGeometry>
+                        M6 12 L10 12 L16 6 L16 26 L10 20 L6 20 Z
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!-- 声波 -->
+            <Path Stroke="#F59E0B" StrokeThickness="2" Fill="Transparent">
+                <Path.Data>
+                    <PathGeometry>
+                        M20 10 Q24 16 20 22
+                        M24 6 Q30 16 24 26
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- 系统通知图标 - 信封设计 -->
+        <Canvas x:Key="NotificationIcon" Width="32" Height="32">
+            <!-- 信封背景 -->
+            <Path Stroke="#60A5FA" StrokeThickness="2" Fill="#60A5FA" Opacity="0.1">
+                <Path.Data>
+                    <PathGeometry>
+                        M4 8 L4 24 Q4 26 6 26 L26 26 Q28 26 28 24 L28 8 Q28 6 26 6 L6 6 Q4 6 4 8 Z
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!-- 信封轮廓 -->
+            <Path Stroke="#60A5FA" StrokeThickness="2" Fill="Transparent">
+                <Path.Data>
+                    <PathGeometry>
+                        M4 8 L4 24 Q4 26 6 26 L26 26 Q28 26 28 24 L28 8 Q28 6 26 6 L6 6 Q4 6 4 8 Z
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!-- 信封翻盖 -->
+            <Path Stroke="#60A5FA" StrokeThickness="2" Fill="Transparent">
+                <Path.Data>
+                    <PathGeometry>
+                        M4 8 L16 16 L28 8
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!-- 未读消息指示器 -->
+            <Ellipse Fill="#EF4444" Width="8" Height="8" Canvas.Left="22" Canvas.Top="4"/>
+            <Ellipse Fill="White" Width="4" Height="4" Canvas.Left="24" Canvas.Top="6"/>
+        </Canvas>
+
+        <!-- 网络连接图标 - WiFi信号 -->
+        <Canvas x:Key="NetworkIcon" Width="32" Height="32">
+            <Path Stroke="#10B981" StrokeThickness="2.5" Fill="Transparent">
+                <Path.Data>
+                    <PathGeometry>
+                        M6 20 L6 28
+                        M12 16 L12 28
+                        M18 12 L18 28
+                        M24 8 L24 28
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
     </Window.Resources>
 
     <Grid Background="{StaticResource BackgroundGradient}">
@@ -452,53 +567,94 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
 
-        <!-- 顶部状态栏 (第0行) -->
-        <Grid Grid.Row="0" Background="{StaticResource StatusBarBackground}">
-            <Grid.Effect>
+        <!-- 顶部状态栏 (第0行) - 增强设计 -->
+        <Border Grid.Row="0" Style="{StaticResource StatusBarGlassEffect}">
+            <Border.Effect>
                 <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
-            </Grid.Effect>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="30"/>
-            </Grid.ColumnDefinitions>
+            </Border.Effect>
+            <Grid Height="70">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- 左侧时间和标题 -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
-                <TextBlock Text="⚡" FontSize="20" Foreground="#10B981" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <TextBlock Text="{Binding CurrentTime}" FontSize="16" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                <TextBlock Text="|" FontSize="16" Foreground="#374151" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBlock Text="分布式能源管理系统" FontSize="16" FontWeight="SemiBold" Foreground="#10B981" VerticalAlignment="Center"/>
-            </StackPanel>
+                <!-- 左侧时间和标题 -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <!-- 应用图标 -->
+                    <Border Background="#10B981" CornerRadius="10" Width="40" Height="40" Margin="0,0,15,0">
+                        <TextBlock Text="⚡" FontSize="20" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
 
-            <!-- 右侧状态图标 -->
-            <Grid Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
-                <Button Content="📢" Style="{StaticResource StatusButtonStyle}" ToolTip="系统通知" HorizontalAlignment="Left"/>
-                <Border Background="#EF4444" CornerRadius="6" Padding="3,1"
-                        HorizontalAlignment="Left" VerticalAlignment="Top"
-                        Margin="18,0,0,0" Width="16" Height="16">
-                    <TextBlock Text="3" FontSize="9" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Border>
+                    <!-- 时间显示 -->
+                    <TextBlock Text="{Binding CurrentTime}" FontSize="18" FontWeight="SemiBold"
+                               Foreground="#E5E7EB" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+                    <!-- 分隔线 -->
+                    <Border Width="1" Height="30" Background="#374151" Margin="0,0,20,0"/>
+
+                    <!-- 系统标题 -->
+                    <TextBlock Text="分布式能源管理系统" FontSize="16" FontWeight="SemiBold"
+                               Foreground="#10B981" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- 右侧状态图标组 -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,30,0">
+                    <!-- 系统通知 -->
+                    <Grid Margin="5,0">
+                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="系统通知">
+                            <ContentControl Content="{StaticResource NotificationIcon}"/>
+                        </Button>
+                        <!-- 未读消息数 -->
+                        <Border Background="#EF4444" CornerRadius="8" Padding="3,1"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                Margin="22,0,0,0" Width="18" Height="18">
+                            <TextBlock Text="3" FontSize="9" FontWeight="Bold"
+                                       Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- 分隔线 -->
+                    <Border Width="1" Height="30" Background="#374151" Margin="10,0"/>
+
+                    <!-- 网络连接 -->
+                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="网络连接" Margin="5,0">
+                        <ContentControl Content="{StaticResource NetworkIcon}"/>
+                    </Button>
+
+                    <!-- 蓝牙设置 -->
+                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="蓝牙设置" Margin="5,0">
+                        <ContentControl Content="{StaticResource BluetoothIcon}"/>
+                    </Button>
+
+                    <!-- 报警声音 -->
+                    <Grid Margin="5,0">
+                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="报警声音">
+                            <ContentControl Content="{StaticResource AlarmSoundIcon}"/>
+                        </Button>
+                        <!-- 警告提示 -->
+                        <Border Background="#F59E0B" CornerRadius="8" Padding="2,1"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                Margin="22,0,0,0" Width="16" Height="16">
+                            <TextBlock Text="!" FontSize="8" FontWeight="Bold"
+                                       Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- 分隔线 -->
+                    <Border Width="1" Height="30" Background="#374151" Margin="10,0"/>
+
+                    <!-- 运行状态 -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                        <Border Style="{StaticResource StatusBreathingDot}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <TextBlock Text="运行中" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#10B981" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
-            <Button Grid.Column="2" Content="📶" Style="{StaticResource StatusButtonStyle}" ToolTip="网络连接" Margin="5,0"/>
-            <Button Grid.Column="3" Content="🔵" Style="{StaticResource StatusButtonStyle}" ToolTip="系统正常" Margin="5,0"/>
-            <Grid Grid.Column="4" VerticalAlignment="Center" Margin="5,0">
-                <Button Content="🔔" Style="{StaticResource StatusButtonStyle}" ToolTip="警报中心" HorizontalAlignment="Left"/>
-                <Border Background="#F59E0B" CornerRadius="6" Padding="2,1"
-                        HorizontalAlignment="Left" VerticalAlignment="Top"
-                        Margin="18,0,0,0" Width="14" Height="14">
-                    <TextBlock Text="!" FontSize="8" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Border>
-            </Grid>
-            <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,20,0">
-                <Border Style="{StaticResource StatusBreathingDot}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <TextBlock Text="运行中" FontSize="12" Foreground="#10B981" VerticalAlignment="Center"/>
-            </StackPanel>
-        </Grid>
+        </Border>
 
         <!-- 主内容区域 (第1行) -->
         <Grid Grid.Row="1">
