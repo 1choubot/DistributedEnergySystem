@@ -1,0 +1,56 @@
+<Page x:Class="DistributedEnergySystem.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1024"
+      Title="SettingsPage">
+
+    <!--
+        Page: WPF中的页面控件，用于导航系统
+        x:Class: 指定后台代码的类名，将XAML与C#代码关联
+        xmlns: XML命名空间，引入WPF框架
+        mc:Ignorable="d": 设计器相关的指令，告诉编译器忽略d:前缀的属性
+    -->
+
+    <Grid Background="#1E1E1E">
+        <!-- 设置页面标题 -->
+        <TextBlock Text="系统设置"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,50,0,0"/>
+
+        <!-- 设置内容占位区域 -->
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="设置页面内容待开发"
+                       FontSize="18"
+                       Foreground="#888"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="• 国家和语言设置"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,20,0,5"/>
+            <TextBlock Text="• 时区和时间设置"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,5"/>
+            <TextBlock Text="• WLAN和蓝牙配置"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,5"/>
+            <TextBlock Text="• 背光控制和音量设置"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,5"/>
+            <TextBlock Text="• 息屏时间和蜂鸣器设置"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+<Page x:Class="DistributedEnergySystem.Views.SystemPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1024"
+      Title="SystemPage">
+
+    <Grid Background="#1E1E1E">
+        <!-- 系统页面标题 -->
+        <TextBlock Text="系统详情"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,50,0,0"/>
+
+        <!-- 系统内容占位区域 -->
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="系统详情页面内容待开发"
+                       FontSize="18"
+                       Foreground="#888"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="• 事件记录（故障和告警）"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,20,0,5"/>
+            <TextBlock Text="• 设备信息查看"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,5"/>
+            <TextBlock Text="• 帮助和FAQ"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,5"/>
+            <TextBlock Text="• 保修信息"
+                       FontSize="14"
+                       Foreground="#666"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
