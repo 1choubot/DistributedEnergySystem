@@ -394,29 +394,115 @@
             </Setter>
         </Style>
 
+        <!-- 导航栏毛玻璃背景 -->
+        <LinearGradientBrush x:Key="NavigationBackground" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#E61A1F2E" Offset="0"/>
+            <GradientStop Color="#F20F1419" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- 导航栏玻璃态效果 -->
+        <Style x:Key="NavigationGlassStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#301A1F2E" Offset="0"/>
+                        <GradientStop Color="#200F1419" Offset="0.5"/>
+                        <GradientStop Color="#150A0E14" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#33FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 导航图标资源 -->
+        <Viewbox x:Key="HomeIcon" Width="24" Height="24">
+            <Canvas Width="24" Height="24">
+                <Path Fill="#FFFFFF" Data="M 12,2 L 2,12 L 6,12 L 6,20 L 10,20 L 10,14 L 14,14 L 14,20 L 18,20 L 18,12 L 22,12 L 12,2 Z"/>
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox x:Key="DataAnalysisIcon" Width="24" Height="24">
+            <Canvas Width="24" Height="24">
+                <Rectangle Fill="#FFFFFF" Width="3" Height="12" Canvas.Left="3" Canvas.Top="10"/>
+                <Rectangle Fill="#FFFFFF" Width="3" Height="18" Canvas.Left="8" Canvas.Top="4"/>
+                <Rectangle Fill="#FFFFFF" Width="3" Height="8" Canvas.Left="13" Canvas.Top="14"/>
+                <Rectangle Fill="#FFFFFF" Width="3" Height="15" Canvas.Left="18" Canvas.Top="7"/>
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox x:Key="SettingsIcon" Width="24" Height="24">
+            <Canvas Width="24" Height="24">
+                <Path Fill="#FFFFFF" Data="M 12,15.5 A 3.5,3.5 0 0,1 8.5,12 A 3.5,3.5 0 0,1 12,8.5 A 3.5,3.5 0 0,1 15.5,12 A 3.5,3.5 0 0,1 12,15.5 M 19.43,12.97 C 19.47,12.65 19.5,12.33 19.5,12 C 19.5,11.67 19.47,11.34 19.43,11.03 L 21.54,9.37 C 21.73,9.22 21.78,8.95 21.66,8.73 L 19.66,5.27 C 19.54,5.05 19.27,4.96 19.05,5.05 L 16.56,6.05 C 16.04,5.66 15.5,5.32 14.87,5.07 L 14.5,2.42 C 14.46,2.18 14.25,2 14,2 L 10,2 C 9.75,2 9.54,2.18 9.5,2.42 L 9.13,5.07 C 8.5,5.32 7.96,5.66 7.44,6.05 L 4.95,5.05 C 4.73,4.96 4.46,5.05 4.34,5.27 L 2.34,8.73 C 2.21,8.95 2.27,9.22 2.46,9.37 L 4.57,11.03 C 4.53,11.34 4.5,11.67 4.5,12 C 4.5,12.33 4.53,12.65 4.57,12.97 L 2.46,14.63 C 2.27,14.78 2.21,15.05 2.34,15.27 L 4.34,18.73 C 4.46,18.95 4.73,19.03 4.95,18.95 L 7.44,17.94 C 7.96,18.34 8.5,18.68 9.13,18.93 L 9.5,21.58 C 9.54,21.82 9.75,22 10,22 L 14,22 C 14.25,22 14.46,21.82 14.5,21.58 L 14.87,18.93 C 15.5,18.67 16.04,18.34 16.56,17.94 L 19.05,18.95 C 19.27,19.03 19.54,18.95 19.66,18.73 L 21.66,15.27 C 21.78,15.05 21.73,14.78 21.54,14.63 L 19.43,12.97 Z"/>
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox x:Key="RunRecordsIcon" Width="24" Height="24">
+            <Canvas Width="24" Height="24">
+                <Path Fill="#FFFFFF" Stroke="#FFFFFF" StrokeThickness="1.5" Data="M 3,3 L 21,3 L 21,21 L 3,21 Z M 7,7 L 17,7 M 7,12 L 17,12 M 7,17 L 13,17"/>
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox x:Key="HelpIcon" Width="24" Height="24">
+            <Canvas Width="24" Height="24">
+                <Path Fill="#FFFFFF" Data="M 12,2 C 17.52,2 22,6.48 22,12 C 22,17.52 17.52,22 12,22 C 6.48,22 2,17.52 2,12 C 2,6.48 6.48,2 12,2 M 13,17 L 11,17 L 11,19 L 13,19 L 13,17 M 13,13 L 11,13 C 11,10 15,10 15,8 C 15,6.9 14.1,6 13,6 C 12.45,6 11.95,6.22 11.59,6.59 C 11.22,6.95 11,7.45 11,8 L 9,8 C 9,6.34 10.34,5 12,5 C 13.66,5 15,6.34 15,8 C 15,11 13,11 13,13 Z"/>
+            </Canvas>
+        </Viewbox>
+
         <Style x:Key="NavButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#1F2937"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#9CA3AF"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="65"/>
+            <Setter Property="Margin" Value="5,12"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                CornerRadius="10"
-                                Padding="15,8">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12"
+                                BorderThickness="1"
+                                BorderBrush="Transparent">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Transparent" BlurRadius="0" ShadowDepth="0"/>
+                            </Border.Effect>
+                            <ContentPresenter ContentSource="Content"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
+                            <!-- 悬停状态 -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#374151"/>
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#374151"/>
+                            </Trigger>
+
+                            <!-- 按下状态 -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#4B5563"/>
+                                <Setter TargetName="ButtonBorder" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="37.5" CenterY="32.5"/>
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <!-- 活动导航按钮样式 -->
+        <Style x:Key="ActiveNavButtonStyle" TargetType="Button" BasedOn="{StaticResource NavButtonStyle}">
+            <Setter Property="Background" Value="#374151"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
         </Style>
 
         <!-- 模块样式 -->
@@ -656,730 +742,81 @@
             </Grid>
         </Border>
 
-        <!-- 主内容区域 (第1行) -->
-        <Grid Grid.Row="1">
-            <!-- 背景装饰网格 -->
-            <Grid.Background>
-                <VisualBrush TileMode="Tile" Viewport="0,0,100,100" ViewportUnits="Absolute" Opacity="0.05">
-                    <VisualBrush.Visual>
-                        <Canvas Width="100" Height="100">
-                            <Path Stroke="#10B981" StrokeThickness="0.5" Data="M 0,50 L 100,50 M 50,0 L 50,100"/>
-                        </Canvas>
-                    </VisualBrush.Visual>
-                </VisualBrush>
-            </Grid.Background>
-
-            <!-- 使用ViewBox让整个Canvas布局自动居中 -->
-            <Viewbox Stretch="Uniform">
-                <Canvas Width="1350" Height="700">
-                    <!-- 定义中央区域的大小和位置 -->
-                    <Canvas.Resources>
-                        <Style x:Key="ModuleStyle" TargetType="Border">
-                            <Setter Property="Background" Value="{StaticResource ModuleBackground}"/>
-                            <Setter Property="CornerRadius" Value="15"/>
-                            <Setter Property="BorderBrush" Value="#374151"/>
-                            <Setter Property="BorderThickness" Value="1"/>
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Canvas.Resources>
-
-                    <!-- 动态粒子背景 - 临时禁用，确保程序运行 -->
-                    <!--<ctrl:EnergyFlowBackground
-                        Canvas.Left="0" Canvas.Top="0"
-                        Width="1350" Height="700"
-                        Panel.ZIndex="0"
-                        Opacity="0.6"
-                        IsHitTestVisible="False"/>-->
-
-                    <!-- 玻璃态背景装饰 -->
-                    <Border Canvas.Top="0"
-                            Width="1350" Height="700"
-                            Style="{StaticResource GlassBorderStyle}"
-                            Opacity="0.2"
-                            Panel.ZIndex="1"
-                            IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-                    <!-- 中央产品渲染图区域 -->
-                    <Border Canvas.Left="425" Canvas.Top="240"
-                            Width="500" Height="440"
-                            Style="{StaticResource GlassCenterStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            <!-- 产品渲染图区域 -->
-                            <Border Grid.Row="1" Background="#0F1419" CornerRadius="10" Margin="20">
-                                <TextBlock Text="产品图片展示区域"
-                                           FontSize="18"
-                                           Foreground="#6B7280"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </Border>
-
-                            <!-- 系统参数汇总 -->
-                            <Grid Grid.Row="2" Margin="20,15,20,20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                                    <TextBlock Text="工作模式" FontSize="12" Foreground="#9CA3AF"/>
-                                    <TextBlock Text="自动模式" FontSize="14" FontWeight="Bold" Foreground="#10B981"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                    <TextBlock Text="系统温度" FontSize="12" Foreground="#9CA3AF"/>
-                                    <TextBlock Text="35°C" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                                    <TextBlock Text="总功率" FontSize="12" Foreground="#9CA3AF"/>
-                                    <TextBlock Text="156.8 kW" FontSize="14" FontWeight="Bold" Foreground="#F59E0B"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
-                                    <TextBlock Text="运行状态" FontSize="12" Foreground="#9CA3AF"/>
-                                    <TextBlock Text="正常运行" FontSize="14" FontWeight="Bold" Foreground="#10B981"/>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Border>
-
-                    <!-- 顶部：光伏参数模块 - 最重要的模块，放在最上面 -->
-                    <Border Canvas.Left="485" Canvas.Top="15"
-                            Width="380" Height="230"
-                            Style="{StaticResource GlassModuleStyle}">
-                        <!-- Grid用于内部布局管理 -->
-                        <Grid Margin="20">
-                            <Grid.RowDefinitions>
-                                <!-- Auto: 自动高度，根据内容确定 -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- *: 占用剩余空间 -->
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            <!-- 标题 - Grid.Row="0" 第一行 -->
-                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                <ContentControl Content="{StaticResource SunIcon}"/>
-                                <TextBlock Text="光伏发电"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
-                            </StackPanel>
-
-                            <!-- 参数显示区域 - Grid.Row="1" 参数部分 -->
-                            <Grid Grid.Row="1">
-                                <!-- 分成左右两列 -->
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 左列：基本参数 -->
-                                <StackPanel Grid.Column="0">
-                                    <!-- StackPanel垂直排列控件 -->
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <!-- Orientation="Horizontal" 水平排列 -->
-                                        <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <!-- Width固定35像素，对齐美观 -->
-                                        <TextBlock Text="{Binding SolarPower.VoltageDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                        <!-- Binding是WPF的核心，数据绑定到ViewModel的SolarPower.VoltageDisplay属性 -->
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding SolarPower.CurrentDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- 右列：功率和进度条 -->
-                                <StackPanel Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding SolarPower.PowerDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Foreground="#F59E0B"
-                                                   Style="{StaticResource PowerTextBlock}"/>
-                                    </StackPanel>
-
-                                    <!-- 进度条显示功率百分比 -->
-                                    <Grid Margin="0,3">
-                                        <TextBlock Text="{Binding SolarPower.PowerPercentage, StringFormat={}{0:F0}%}"
-                                                   FontSize="9"
-                                                   Foreground="White"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Top"
-                                                   Margin="0,0,0,2"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                        <ProgressBar Value="{Binding SolarPower.PowerPercentage, NotifyOnTargetUpdated=True}"
-                                                     Maximum="100"
-                                                     Style="{StaticResource GradientProgressBar}"
-                                                     Foreground="#F59E0B"
-                                                     Margin="0,12,0,0"/>
-                                    </Grid>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 趋势图标题 - Grid.Row="2" -->
-                            <TextBlock Grid.Row="2" Text="实时功率趋势"
-                                       FontSize="10" Foreground="#9CA3AF"
-                                       Margin="0,10,0,5" HorizontalAlignment="Left"/>
-
-                            <!-- 趋势图区域 - Grid.Row="3" -->
-                            <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}"
-                                    x:Name="SolarTrendCanvas">
-                                <Grid>
-                                    <!-- 网格线 -->
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="30" X2="260" Y2="30"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="45" X2="260" Y2="45"/>
-
-                                    <!-- 坐标轴 -->
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="10" X2="20" Y2="50"/>
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="50" X2="260" Y2="50"/>
-
-                                    <!-- 功率曲线 -->
-                                    <Polyline x:Name="SolarPowerLine"
-                                              Points="20,45 60,35 100,25 140,20 180,15 220,18 260,22"
-                                              Stroke="#F59E0B"
-                                              StrokeThickness="2"
-                                              Fill="Transparent"
-                                              StrokeLineJoin="Round">
-                                        <Polyline.Effect>
-                                            <DropShadowEffect Color="#F59E0B" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
-                                        </Polyline.Effect>
-                                    </Polyline>
-
-                                    <!-- 发光效果 -->
-                                    <Polyline x:Name="SolarPowerGlow"
-                                              Points="20,45 60,35 100,25 140,20 180,15 220,18 260,22"
-                                              Stroke="#F59E0B"
-                                              StrokeThickness="6"
-                                              Fill="Transparent"
-                                              Opacity="0.2"
-                                              StrokeLineJoin="Round"/>
-                                </Grid>
-                            </Border>
-
-                            <!-- 状态显示 - Grid.Row="4" 底部 -->
-                            <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Border Style="{StaticResource StatusBreathingDot}"
-                                           Background="#10B981"
-                                           VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                    <TextBlock Text="{Binding SolarPower.StatusText}"
-                                               FontSize="10" FontWeight="SemiBold"
-                                               Foreground="#10B981"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </Border>
-
-                    <!-- 左上：风电参数模块 -->
-                    <Border Canvas.Left="70" Canvas.Top="105"
-                            Width="330" Height="240"
-                            Style="{StaticResource GlassModuleStyle}">
-                        <Grid Margin="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                <ContentControl Content="{StaticResource WindIcon}"/>
-                                <TextBlock Text="风力发电"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
-                            </StackPanel>
-
-                            <!-- 参数显示区域 -->
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 左列：基本参数 -->
-                                <StackPanel Grid.Column="0">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding WindPower.VoltageDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding WindPower.CurrentDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- 右列：功率和进度条 -->
-                                <StackPanel Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding WindPower.PowerDisplay, NotifyOnTargetUpdated=True}"
-                                                   FontSize="11" FontWeight="SemiBold"
-                                                   Foreground="#3B82F6"
-                                                   Style="{StaticResource PowerTextBlock}"/>
-                                    </StackPanel>
-
-                                    <!-- 进度条显示功率百分比 -->
-                                    <Grid Margin="0,3">
-                                        <TextBlock Text="{Binding WindPower.PowerPercentage, StringFormat={}{0:F0}%}"
-                                                   FontSize="9"
-                                                   Foreground="White"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Top"
-                                                   Margin="0,0,0,2"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                        <ProgressBar Value="{Binding WindPower.PowerPercentage, NotifyOnTargetUpdated=True}"
-                                                     Maximum="100"
-                                                     Style="{StaticResource GradientProgressBar}"
-                                                     Foreground="#3B82F6"
-                                                     Margin="0,12,0,0"/>
-                                    </Grid>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 趋势图标题 -->
-                            <TextBlock Grid.Row="2" Text="实时功率趋势"
-                                       FontSize="10" Foreground="#9CA3AF"
-                                       Margin="0,10,0,5" HorizontalAlignment="Left"/>
-
-                            <!-- 趋势图区域 -->
-                            <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}">
-                                <Grid>
-                                    <!-- 网格线 -->
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="30" X2="260" Y2="30"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="45" X2="260" Y2="45"/>
-
-                                    <!-- 坐标轴 -->
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="10" X2="20" Y2="50"/>
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="50" X2="260" Y2="50"/>
-
-                                    <!-- 功率曲线 -->
-                                    <Polyline Points="20,35 60,25 100,20 140,25 180,30 220,28 260,32"
-                                              Stroke="#3B82F6"
-                                              StrokeThickness="2"
-                                              Fill="Transparent"
-                                              StrokeLineJoin="Round">
-                                        <Polyline.Effect>
-                                            <DropShadowEffect Color="#3B82F6" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
-                                        </Polyline.Effect>
-                                    </Polyline>
-
-                                    <!-- 发光效果 -->
-                                    <Polyline Points="20,35 60,25 100,20 140,25 180,30 220,28 260,32"
-                                              Stroke="#3B82F6"
-                                              StrokeThickness="6"
-                                              Fill="Transparent"
-                                              Opacity="0.2"
-                                              StrokeLineJoin="Round"/>
-                                </Grid>
-                            </Border>
-
-                            <!-- 状态显示 -->
-                            <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Border Style="{StaticResource StatusBreathingDot}"
-                                           Background="#3B82F6"
-                                           VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                    <TextBlock Text="{Binding WindPower.StatusText}"
-                                               FontSize="10" FontWeight="SemiBold"
-                                               Foreground="#10B981"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </Border>
-
-                    <!-- 右上：发电机参数模块 -->
-                    <Border Canvas.Left="950" Canvas.Top="105"
-                            Width="330" Height="240"
-                            Style="{StaticResource GlassModuleStyle}">
-                        <Grid Margin="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                <ContentControl Content="{StaticResource GeneratorIcon}"/>
-                                <TextBlock Text="发电机"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
-                            </StackPanel>
-
-                            <!-- 参数显示区域 -->
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 左列：基本参数 -->
-                                <StackPanel Grid.Column="0">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Generator.VoltageDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Generator.CurrentDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- 右列：功率和进度条 -->
-                                <StackPanel Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Generator.PowerDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="#8B5CF6"/>
-                                    </StackPanel>
-
-                                    <!-- 进度条显示功率百分比 -->
-                                    <Grid Margin="0,3">
-                                        <TextBlock Text="{Binding Generator.PowerPercentage, StringFormat={}{0:F0}%}"
-                                                   FontSize="9"
-                                                   Foreground="White"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Top"
-                                                   Margin="0,0,0,2"/>
-                                        <ProgressBar Value="{Binding Generator.PowerPercentage}"
-                                                     Maximum="100"
-                                                     Style="{StaticResource GradientProgressBar}"
-                                                     Foreground="#8B5CF6"
-                                                     Margin="0,12,0,0"/>
-                                    </Grid>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 趋势图标题 -->
-                            <TextBlock Grid.Row="2" Text="实时功率趋势"
-                                       FontSize="10" Foreground="#9CA3AF"
-                                       Margin="0,10,0,5" HorizontalAlignment="Left"/>
-
-                            <!-- 趋势图区域 -->
-                            <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}">
-                                <Grid>
-                                    <!-- 网格线 -->
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="30" X2="260" Y2="30"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="45" X2="260" Y2="45"/>
-
-                                    <!-- 坐标轴 -->
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="10" X2="20" Y2="50"/>
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="50" X2="260" Y2="50"/>
-
-                                    <!-- 功率曲线 -->
-                                    <Polyline Points="20,50 60,48 100,45 140,42 180,38 220,35 260,40"
-                                              Stroke="#8B5CF6"
-                                              StrokeThickness="2"
-                                              Fill="Transparent"
-                                              StrokeLineJoin="Round">
-                                        <Polyline.Effect>
-                                            <DropShadowEffect Color="#8B5CF6" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
-                                        </Polyline.Effect>
-                                    </Polyline>
-
-                                    <!-- 发光效果 -->
-                                    <Polyline Points="20,50 60,48 100,45 140,42 180,38 220,35 260,40"
-                                              Stroke="#8B5CF6"
-                                              StrokeThickness="6"
-                                              Fill="Transparent"
-                                              Opacity="0.2"
-                                              StrokeLineJoin="Round"/>
-                                </Grid>
-                            </Border>
-
-                            <!-- 状态显示 -->
-                            <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Border Style="{StaticResource StatusBreathingDot}"
-                                           Background="#8B5CF6"
-                                           VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                    <TextBlock Text="{Binding Generator.StatusText}"
-                                               FontSize="10" FontWeight="SemiBold"
-                                               Foreground="#10B981"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </Border>
-
-                    <!-- 左下：电池参数模块 -->
-                    <Border Canvas.Left="70" Canvas.Top="445"
-                            Width="330" Height="240"
-                            Style="{StaticResource GlassModuleStyle}">
-                        <Grid Margin="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                <ContentControl Content="{StaticResource BatteryIcon}"/>
-                                <TextBlock Text="储能系统"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
-                            </StackPanel>
-
-                            <!-- 参数显示区域 -->
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 左列：基本参数 -->
-                                <StackPanel Grid.Column="0">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Battery.VoltageDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Battery.CurrentDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- 右列：SOC和温度 -->
-                                <StackPanel Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="SOC:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding Battery.SocDisplay, NotifyOnTargetUpdated=True}"
-                                                   Style="{StaticResource SOCTextBlock}"
-                                                   Foreground="{Binding Battery.SocColor}"/>
-                                    </StackPanel>
-
-                                    <!-- SOC 进度条 -->
-                                    <Grid Margin="0,3">
-                                        <TextBlock Text="{Binding Battery.Soc, StringFormat={}{0:F0}%}"
-                                                   FontSize="9"
-                                                   Foreground="White"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Top"
-                                                   Margin="0,0,0,2"
-                                                   Style="{StaticResource AnimatedTextBlock}"/>
-                                        <ProgressBar Value="{Binding Battery.Soc, NotifyOnTargetUpdated=True}"
-                                                     Maximum="100"
-                                                     Style="{StaticResource GradientProgressBar}"
-                                                     Foreground="{Binding Battery.SocColor}"
-                                                     Margin="0,12,0,0"/>
-                                    </Grid>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 趋势图标题 -->
-                            <TextBlock Grid.Row="2" Text="SOC变化趋势"
-                                       FontSize="10" Foreground="#9CA3AF"
-                                       Margin="0,10,0,5" HorizontalAlignment="Left"/>
-
-                            <!-- 趋势图区域 -->
-                            <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}">
-                                <Grid>
-                                    <!-- 网格线 -->
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="30" X2="260" Y2="30"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="45" X2="260" Y2="45"/>
-
-                                    <!-- 坐标轴 -->
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="10" X2="20" Y2="50"/>
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="50" X2="260" Y2="50"/>
-
-                                    <!-- SOC曲线 -->
-                                    <Polyline Points="20,25 60,22 100,20 140,18 180,15 220,12 260,10"
-                                              Stroke="#10B981"
-                                              StrokeThickness="2"
-                                              Fill="Transparent"
-                                              StrokeLineJoin="Round">
-                                        <Polyline.Effect>
-                                            <DropShadowEffect Color="#10B981" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
-                                        </Polyline.Effect>
-                                    </Polyline>
-
-                                    <!-- 发光效果 -->
-                                    <Polyline Points="20,25 60,22 100,20 140,18 180,15 220,12 260,10"
-                                              Stroke="#10B981"
-                                              StrokeThickness="6"
-                                              Fill="Transparent"
-                                              Opacity="0.2"
-                                              StrokeLineJoin="Round"/>
-                                </Grid>
-                            </Border>
-
-                            <!-- 状态显示 -->
-                            <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Border Style="{StaticResource StatusBreathingDot}"
-                                           Background="#10B981"
-                                           VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                    <TextBlock Text="{Binding Battery.StatusText}"
-                                               FontSize="10" FontWeight="SemiBold"
-                                               Foreground="{Binding Battery.StatusColor}"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </Border>
-
-                    <!-- 右下：AC输出参数模块 -->
-                    <Border Canvas.Left="950" Canvas.Top="445"
-                            Width="330" Height="240"
-                            Style="{StaticResource GlassModuleStyle}">
-                        <Grid Margin="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                                <ContentControl Content="{StaticResource PowerIcon}"/>
-                                <TextBlock Text="并网输出"
-                                           FontSize="16"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
-                            </StackPanel>
-
-                            <!-- 参数显示区域 -->
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 左列：基本参数 -->
-                                <StackPanel Grid.Column="0">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding ACOutput.VoltageDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding ACOutput.CurrentDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- 右列：功率和频率 -->
-                                <StackPanel Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                        <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding ACOutput.PowerDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="#F97316"/>
-                                    </StackPanel>
-
-                                    <!-- 频率显示 -->
-                                    <StackPanel Orientation="Horizontal" Margin="0,3">
-                                        <TextBlock Text="频率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                        <TextBlock Text="{Binding ACOutput.FrequencyDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="#F97316"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 趋势图标题 -->
-                            <TextBlock Grid.Row="2" Text="输出功率趋势"
-                                       FontSize="10" Foreground="#9CA3AF"
-                                       Margin="0,10,0,5" HorizontalAlignment="Left"/>
-
-                            <!-- 趋势图区域 -->
-                            <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}">
-                                <Grid>
-                                    <!-- 网格线 -->
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="30" X2="260" Y2="30"/>
-                                    <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="45" X2="260" Y2="45"/>
-
-                                    <!-- 坐标轴 -->
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="10" X2="20" Y2="50"/>
-                                    <Line Stroke="#6B7280" StrokeThickness="1" X1="20" Y1="50" X2="260" Y2="50"/>
-
-                                    <!-- 功率曲线 -->
-                                    <Polyline Points="20,40 60,35 100,30 140,25 180,22 220,20 260,18"
-                                              Stroke="#F97316"
-                                              StrokeThickness="2"
-                                              Fill="Transparent"
-                                              StrokeLineJoin="Round">
-                                        <Polyline.Effect>
-                                            <DropShadowEffect Color="#F97316" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
-                                        </Polyline.Effect>
-                                    </Polyline>
-
-                                    <!-- 发光效果 -->
-                                    <Polyline Points="20,40 60,35 100,30 140,25 180,22 220,20 260,18"
-                                              Stroke="#F97316"
-                                              StrokeThickness="6"
-                                              Fill="Transparent"
-                                              Opacity="0.2"
-                                              StrokeLineJoin="Round"/>
-                                </Grid>
-                            </Border>
-
-                            <!-- 状态显示 -->
-                            <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Border Style="{StaticResource StatusBreathingDot}"
-                                           Background="#F97316"
-                                           VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                    <TextBlock Text="{Binding ACOutput.StatusText}"
-                                               FontSize="10" FontWeight="SemiBold"
-                                               Foreground="#10B981"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </Border>
-                </Canvas>
-            </Viewbox>
-        </Grid>
+        <!-- 主内容区域 (第1行) - 页面导航容器 -->
+        <Frame Name="MainContentFrame"
+                Grid.Row="1"
+                Background="Transparent"
+                NavigationUIVisibility="Hidden">
+
+            <!-- Frame样式 -->
+            <Frame.Style>
+                <Style TargetType="Frame">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+            </Frame.Style>
+        </Frame>
 
         <!-- 底部导航栏 (第2行) -->
-        <Grid Grid.Row="2" Background="{StaticResource StatusBarBackground}">
-            <Grid.Effect>
-                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="-2" Opacity="0.3"/>
-            </Grid.Effect>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="2" Style="{StaticResource NavigationGlassStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- 导航按钮 -->
-            <Button Grid.Column="0" Content="🏠 系统总览" Style="{StaticResource NavButtonStyle}" Margin="20,10,5,10"/>
-            <Button Grid.Column="1" Content="⚙️ 系统设置" Style="{StaticResource NavButtonStyle}" Margin="5,10"/>
-            <Button Grid.Column="2" Content="📊 数据分析" Style="{StaticResource NavButtonStyle}" Margin="5,10"/>
-            <Button Grid.Column="3" Content="📈 运行记录" Style="{StaticResource NavButtonStyle}" Margin="5,10"/>
-            <Button Grid.Column="4" Content="❓ 帮助中心" Style="{StaticResource NavButtonStyle}" Margin="5,10,20,10"/>
-        </Grid>
+                <!-- 顶部高光线 -->
+                <Border Grid.ColumnSpan="5" Height="1" VerticalAlignment="Top"
+                        Background="#60FFFFFF" Margin="20,0,20,0"/>
+
+                <!-- 系统总览按钮 -->
+                <Button Grid.Column="0" Name="HomeButton" Click="NavButton_Click" Tag="Home"
+                        Style="{StaticResource ActiveNavButtonStyle}" Margin="15,10,5,10">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{StaticResource HomeIcon}" Width="24" Height="24"/>
+                        <TextBlock Text="系统总览" FontSize="11" Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- 数据分析按钮 -->
+                <Button Grid.Column="1" Name="DataAnalysisButton" Click="NavButton_Click" Tag="DataAnalysis"
+                        Style="{StaticResource NavButtonStyle}" Margin="5,10">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{StaticResource DataAnalysisIcon}" Width="24" Height="24"/>
+                        <TextBlock Text="数据分析" FontSize="11" Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- 系统设置按钮 -->
+                <Button Grid.Column="2" Name="SettingsButton" Click="NavButton_Click" Tag="Settings"
+                        Style="{StaticResource NavButtonStyle}" Margin="5,10">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{StaticResource SettingsIcon}" Width="24" Height="24"/>
+                        <TextBlock Text="系统设置" FontSize="11" Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- 运行记录按钮 -->
+                <Button Grid.Column="3" Name="RunRecordsButton" Click="NavButton_Click" Tag="RunRecords"
+                        Style="{StaticResource NavButtonStyle}" Margin="5,10">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{StaticResource RunRecordsIcon}" Width="24" Height="24"/>
+                        <TextBlock Text="运行记录" FontSize="11" Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- 帮助中心按钮 -->
+                <Button Grid.Column="4" Name="HelpButton" Click="NavButton_Click" Tag="Help"
+                        Style="{StaticResource NavButtonStyle}" Margin="5,10,15,10">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{StaticResource HelpIcon}" Width="24" Height="24"/>
+                        <TextBlock Text="帮助中心" FontSize="11" Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
