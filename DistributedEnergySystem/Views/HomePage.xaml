@@ -775,11 +775,11 @@
                                 </StackPanel>
                             </StackPanel>
 
-                            <!-- 右列：SOC和温度 -->
+                            <!-- 右列：功率和温度 -->
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="SOC:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                    <TextBlock Text="{Binding Battery.SocDisplay, NotifyOnTargetUpdated=True}"
+                                    <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
+                                    <TextBlock Text="{Binding Battery.PowerDisplay, NotifyOnTargetUpdated=True}"
                                                Foreground="#10B981"
                                                FontSize="11" FontWeight="SemiBold"/>
                                 </StackPanel>
@@ -857,7 +857,7 @@
 
                 <!-- 右下：AC输出参数模块 -->
                 <Border Canvas.Left="950" Canvas.Top="445"
-                        Width="330" Height="240"
+                        Width="380" Height="250"
                         Style="{StaticResource GlassModuleStyle}">
                     <Grid Margin="20">
                         <Grid.RowDefinitions>
@@ -869,53 +869,67 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
                             <ContentControl Content="{StaticResource PowerIcon}"/>
-                            <TextBlock Text="并网输出"
+                            <TextBlock Text="{Binding ACOutput.WorkMode}"
                                        FontSize="16"
                                        FontWeight="Bold"
                                        Foreground="White"/>
                         </StackPanel>
 
-                        <!-- 参数显示区域 -->
+                        <!-- 基本参数区域 -->
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!-- 左列：基本参数 -->
+                            <!-- 电压参数 -->
                             <StackPanel Grid.Column="0">
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                                     <TextBlock Text="电压:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
                                     <TextBlock Text="{Binding ACOutput.VoltageDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="电流:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                    <TextBlock Text="{Binding ACOutput.CurrentDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                    <TextBlock Text="频率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
+                                    <TextBlock Text="{Binding ACOutput.FrequencyDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
                                 </StackPanel>
                             </StackPanel>
 
-                            <!-- 右列：功率和频率 -->
+                            <!-- 电流和功率参数 -->
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="功率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
+                                    <TextBlock Text="{Binding ACOutput.CurrentTypeDisplay}" FontSize="11" Foreground="#9CA3AF" Width="35"/>
+                                    <TextBlock Text="{Binding ACOutput.CurrentDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="{Binding ACOutput.PowerLabelText}" FontSize="11" Foreground="#9CA3AF" Width="50"/>
                                     <TextBlock Text="{Binding ACOutput.PowerDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="#F97316"/>
                                 </StackPanel>
 
-                                <!-- 频率显示 -->
-                                <StackPanel Orientation="Horizontal" Margin="0,3">
-                                    <TextBlock Text="频率:" FontSize="11" Foreground="#9CA3AF" Width="35"/>
-                                    <TextBlock Text="{Binding ACOutput.FrequencyDisplay}" FontSize="11" FontWeight="SemiBold" Foreground="#F97316"/>
-                                </StackPanel>
+                                <!-- 功率百分比进度条 -->
+                                <Grid Margin="0,3">
+                                    <TextBlock Text="{Binding ACOutput.PowerPercentage, StringFormat=\{0:F0\}%}"
+                                               FontSize="9"
+                                               Foreground="White"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Top"
+                                               Margin="0,0,0,2"
+                                               Style="{StaticResource AnimatedTextBlock}"/>
+                                    <ProgressBar Value="{Binding ACOutput.PowerPercentage, NotifyOnTargetUpdated=True}"
+                                                 Maximum="100"
+                                                 Style="{StaticResource GradientProgressBar}"
+                                                 Foreground="#F97316"
+                                                 Margin="0,12,0,0"/>
+                                </Grid>
                             </StackPanel>
                         </Grid>
 
                         <!-- 趋势图标题 -->
-                        <TextBlock Grid.Row="2" Text="输出功率趋势"
+                        <TextBlock Grid.Row="2" Text="{Binding ACOutput.PowerLabelText, StringFormat={}{0}趋势}"
                                    FontSize="10" Foreground="#9CA3AF"
-                                   Margin="0,10,0,5" HorizontalAlignment="Left"/>
+                                   Margin="0,5,0,3" HorizontalAlignment="Left"/>
 
                         <!-- 趋势图区域 -->
-                        <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}">
+                        <Border Grid.Row="3" Style="{StaticResource MiniTrendChart}" Margin="0,0,0,8">
                             <Grid>
                                 <!-- 网格线 -->
                                 <Line Stroke="#374151" StrokeThickness="0.5" X1="20" Y1="15" X2="260" Y2="15"/>
@@ -948,15 +962,20 @@
                         </Border>
 
                         <!-- 状态显示 -->
-                        <Border Grid.Row="4" Background="#1F2937" CornerRadius="8" Padding="8,4" Margin="0,8,0,0">
+                        <Border Grid.Row="4" Background="#1F2937" CornerRadius="6" Padding="6,3" Margin="0,0,0,0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Border Style="{StaticResource StatusBreathingDot}"
                                        Background="#F97316"
-                                       VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                       VerticalAlignment="Center" Margin="0,0,5,0"/>
                                 <TextBlock Text="{Binding ACOutput.StatusText}"
-                                           FontSize="10" FontWeight="SemiBold"
+                                           FontSize="9" FontWeight="SemiBold"
                                            Foreground="#10B981"
                                            VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding ACOutput.PowerFlowText}"
+                                           FontSize="9" FontWeight="SemiBold"
+                                           Foreground="#10B981"
+                                           VerticalAlignment="Center"
+                                           Margin="6,0,0,0"/>
                             </StackPanel>
                         </Border>
                     </Grid>

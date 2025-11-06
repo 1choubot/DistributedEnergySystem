@@ -380,9 +380,27 @@ namespace DistributedEnergySystem.Models
         }
 
         public string VoltageDisplay => $"{Voltage:F1} V";
-        public string CurrentDisplay => $"{Current:F1} A";
+        public string CurrentDisplay => $"{Math.Abs(Current):F1} A";
         public string PowerDisplay => $"{Math.Abs(Power):F1} kW";
         public string FrequencyDisplay => $"{Frequency:F1} Hz";
+
+        // 新增双向功率显示属性
+        public string WorkMode
+        {
+            get
+            {
+                if (Power > 0) return "并网输出";
+                if (Power < 0) return "电网充电";
+                return "待机";
+            }
+        }
+
+        public string GridVoltageDisplay => $"{Voltage:F1} V";
+        public string CurrentTypeText => Power > 0 ? "输出" : Power < 0 ? "输入" : "无";
+        public string CurrentTypeDisplay => $"{CurrentTypeText}:";
+        public string PowerLabelText => Power > 0 ? "输出功率:" : Power < 0 ? "输入功率:" : "功率:";
+        public string PowerFlowText => Power > 0 ? "→ 电网" : Power < 0 ? "← 电网" : "无流向";
+        public string MaxPowerDisplay => "5.0kW";
 
         public string StatusText
         {

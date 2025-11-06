@@ -1,0 +1,182 @@
+<UserControl x:Class="DistributedEnergySystem.Pages.Settings.AudioSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="700">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20">
+
+            <!-- 蜂鸣器设置 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🔔 蜂鸣器设置" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="蜂鸣器总开关" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="BuzzerToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="蜂鸣器音量" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+                                    <Slider Name="BuzzerVolumeSlider" Minimum="0" Maximum="100" Value="70"
+                                             Width="120" Foreground="#10B981" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=BuzzerVolumeSlider, Path=Value, StringFormat={}{0:F0}%}"
+                                               FontSize="12" Foreground="#6B7280" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="控制系统报警蜂鸣器" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 按键音效 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🎵 按键音效" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="触摸按键音" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="KeySoundToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="按键音量" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+                                    <Slider Name="KeyVolumeSlider" Minimum="0" Maximum="100" Value="50"
+                                             Width="120" Foreground="#10B981" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=KeyVolumeSlider, Path=Value, StringFormat={}{0:F0}%}"
+                                               FontSize="12" Foreground="#6B7280" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="触摸屏操作反馈音效" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 报警音量 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🚨 报警音量" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="故障报警" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+                                    <Slider Name="FaultAlarmSlider" Minimum="0" Maximum="100" Value="80"
+                                             Width="120" Foreground="#EF4444" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=FaultAlarmSlider, Path=Value, StringFormat={}{0:F0}%}"
+                                               FontSize="12" Foreground="#6B7280" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="警告提示" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+                                    <Slider Name="WarningAlarmSlider" Minimum="0" Maximum="100" Value="60"
+                                             Width="120" Foreground="#F59E0B" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=WarningAlarmSlider, Path=Value, StringFormat={}{0:F0}%}"
+                                               FontSize="12" Foreground="#6B7280" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="正常提示" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0,0,0">
+                                    <Slider Name="InfoAlarmSlider" Minimum="0" Maximum="100" Value="40"
+                                             Width="120" Foreground="#10B981" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ElementName=InfoAlarmSlider, Path=Value, StringFormat={}{0:F0}%}"
+                                               FontSize="12" Foreground="#6B7280" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="不同类型报警的音量设置" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 测试区域 -->
+            <Border Background="#1F2937" CornerRadius="8" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🔊 音频测试" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="测试音频" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="TestAudioButton" Content="播放测试音"
+                                        Grid.Column="1" Width="100" Height="30"
+                                        Background="#10B981" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <TextBlock Text="点击按钮测试当前音频设置" FontSize="12" Foreground="#6B7280"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="测试系统音频输出功能" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

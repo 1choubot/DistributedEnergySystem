@@ -1,0 +1,228 @@
+<UserControl x:Class="DistributedEnergySystem.Pages.Settings.SystemInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="700">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20">
+
+            <!-- 设备概览 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="📋 设备概览" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="设备名称" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="分布式能源管理系统 DES-5000" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="制造商" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="新能源科技有限公司" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="产品型号" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="DES-5000-X" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="生产日期" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="2024-01-15" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="设备基本信息和规格" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 系统状态 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="💡 系统状态" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="系统状态" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="正常运行" FontSize="14" Foreground="#10B981" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="运行时间" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="TotalUptimeText" Text="128天 15小时 32分钟" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="本次运行" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="CurrentUptimeText" Text="15天 8小时 25分钟" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="系统温度" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="SystemTempText" Text="42.5°C" FontSize="14" Foreground="#10B981" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="系统运行状态和性能信息" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 许可证信息 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="📜 许可证信息" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="许可证类型" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="商业版" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="许可证编号" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="DES-COM-2024-0001" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="有效期至" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="2027-01-15" FontSize="14" Foreground="#10B981" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="技术支持" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="SupportButton" Content="联系支持"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="软件许可证和技术支持信息" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 法律信息 -->
+            <Border Background="#1F2937" CornerRadius="8" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="⚖️ 法律信息" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="用户手册" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="UserManualButton" Content="查看手册"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="隐私政策" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="PrivacyPolicyButton" Content="查看政策"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="使用条款" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="TermsButton" Content="查看条款"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="产品文档和法律声明" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

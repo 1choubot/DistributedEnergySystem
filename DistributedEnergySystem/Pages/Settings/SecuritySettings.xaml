@@ -1,0 +1,227 @@
+<UserControl x:Class="DistributedEnergySystem.Pages.Settings.SecuritySettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="700">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20">
+
+            <!-- 用户管理 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="👤 用户管理" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="当前用户" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="管理员" FontSize="14" Foreground="#10B981" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="修改密码" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="ChangePasswordButton" Content="修改密码"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#10B981" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="用户权限" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="UserPermissionsButton" Content="权限管理"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="系统用户账户和权限管理" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 访问控制 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🔒 访问控制" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="屏幕锁定" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="ScreenLockToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="自动锁定时间" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Column="1" Name="AutoLockTimeComboBox" SelectedIndex="2" Width="120" Height="30"
+                                         Background="#374151" Foreground="#E5E7EB"
+                                         BorderThickness="0" Margin="20,0,0,0">
+                                    <ComboBoxItem Content="5分钟"/>
+                                    <ComboBoxItem Content="10分钟"/>
+                                    <ComboBoxItem Content="30分钟"/>
+                                    <ComboBoxItem Content="1小时"/>
+                                </ComboBox>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="会话超时" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Column="1" Name="SessionTimeoutComboBox" SelectedIndex="1" Width="120" Height="30"
+                                         Background="#374151" Foreground="#E5E7EB"
+                                         BorderThickness="0" Margin="20,0,0,0">
+                                    <ComboBoxItem Content="30分钟"/>
+                                    <ComboBoxItem Content="1小时"/>
+                                    <ComboBoxItem Content="4小时"/>
+                                    <ComboBoxItem Content="8小时"/>
+                                </ComboBox>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="系统访问控制和安全策略" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 数据安全 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🔐 数据安全" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="数据加密" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="DataEncryptionToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="操作日志" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="AuditLogToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="远程访问" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="RemoteAccessToggle" Content="关闭" IsChecked="False"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#374151" Foreground="#9CA3AF"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="数据保护和安全传输设置" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 安全审计 -->
+            <Border Background="#1F2937" CornerRadius="8" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🛡️ 安全审计" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="登录记录" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="LoginHistoryButton" Content="查看记录"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="操作记录" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="OperationHistoryButton" Content="查看记录"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="安全事件" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="SecurityEventsButton" Content="查看事件"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#F59E0B" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="系统安全事件和操作审计" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

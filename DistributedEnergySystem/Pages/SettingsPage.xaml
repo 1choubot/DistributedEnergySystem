@@ -41,50 +41,12 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <!-- 页面标题 -->
-            <RowDefinition Height="80"/>
             <!-- 主内容区域 -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- 页面标题栏 -->
-        <Border Grid.Row="0" Background="#1A202C" Margin="20,20,20,10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
-            </Border.Effect>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="30,0">
-                <!-- 返回按钮 -->
-                <Button Name="BackButton"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Width="40" Height="40"
-                        Margin="0,0,20,0"
-                        Cursor="Hand"
-                        Click="BackButton_Click">
-                    <TextBlock Text="←" FontSize="24" Foreground="#10B981"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
-
-                <!-- 页面标题 -->
-                <TextBlock Text="⚙️ 系统设置"
-                           FontSize="24" FontWeight="SemiBold"
-                           Foreground="#10B981"
-                           VerticalAlignment="Center"/>
-
-                <!-- 分隔线 -->
-                <Border Width="2" Height="30" Background="#374151"
-                        Margin="20,0,20,0" VerticalAlignment="Center"/>
-
-                <!-- 页面描述 -->
-                <TextBlock Text="配置和管理系统参数"
-                           FontSize="14"
-                           Foreground="#9CA3AF"
-                           VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
-
         <!-- 主内容区域 -->
-        <Grid Grid.Row="1" Margin="20,10,20,20">
+        <Grid Grid.Row="0" Margin="20,20,20,20">
             <Grid.ColumnDefinitions>
                 <!-- 左侧菜单 -->
                 <ColumnDefinition Width="250"/>
@@ -115,69 +77,91 @@
                              SelectionMode="Single"
                              SelectionChanged="SettingsMenu_SelectionChanged">
 
-                        <!-- 设备配置 -->
-                        <ListBoxItem Name="DeviceConfigItem"
-                                     Background="#1F2937"
+                        <!-- 界面设置 -->
+                        <ListBoxItem Name="InterfaceSettingsItem"
+                                     Background="Transparent"
                                      Margin="5,2"
-                                     Tag="DeviceConfig">
+                                     Tag="InterfaceSettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
-                                <TextBlock Text="🔧" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="设备配置" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="🎨" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="界面设置" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
 
-                        <!-- 网络设置 -->
-                        <ListBoxItem Name="NetworkSettingsItem"
+                        <!-- 时间设置 -->
+                        <ListBoxItem Name="TimeSettingsItem"
                                      Background="Transparent"
                                      Margin="5,2"
-                                     Tag="NetworkSettings">
+                                     Tag="TimeSettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
-                                <TextBlock Text="🌐" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="网络设置" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="🕒" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="时间设置" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
 
-                        <!-- 用户管理 -->
-                        <ListBoxItem Name="UserManagementItem"
+                        <!-- 音频设置 -->
+                        <ListBoxItem Name="AudioSettingsItem"
                                      Background="Transparent"
                                      Margin="5,2"
-                                     Tag="UserManagement">
+                                     Tag="AudioSettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
-                                <TextBlock Text="👥" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="用户管理" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="🔊" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="音频设置" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
 
-                        <!-- 系统参数 -->
-                        <ListBoxItem Name="SystemParamsItem"
+                        <!-- 显示设置 -->
+                        <ListBoxItem Name="DisplaySettingsItem"
                                      Background="Transparent"
                                      Margin="5,2"
-                                     Tag="SystemParams">
+                                     Tag="DisplaySettings">
+                            <StackPanel Orientation="Horizontal" Margin="10,8">
+                                <TextBlock Text="🖥️" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="显示设置" FontSize="14" Foreground="#E5E7EB"/>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <!-- 系统设置 -->
+                        <ListBoxItem Name="SystemSettingsItem"
+                                     Background="Transparent"
+                                     Margin="5,2"
+                                     Tag="SystemSettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
                                 <TextBlock Text="⚙️" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="系统参数" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="系统设置" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
 
-                        <!-- 数据备份 -->
-                        <ListBoxItem Name="DataBackupItem"
+                        <!-- 安全设置 -->
+                        <ListBoxItem Name="SecuritySettingsItem"
                                      Background="Transparent"
                                      Margin="5,2"
-                                     Tag="DataBackup">
+                                     Tag="SecuritySettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
-                                <TextBlock Text="💾" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="数据备份" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="🔐" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="安全设置" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
 
-                        <!-- 日志管理 -->
-                        <ListBoxItem Name="LogManagementItem"
+                        <!-- 连接设置 -->
+                        <ListBoxItem Name="ConnectionSettingsItem"
                                      Background="Transparent"
                                      Margin="5,2"
-                                     Tag="LogManagement">
+                                     Tag="ConnectionSettings">
                             <StackPanel Orientation="Horizontal" Margin="10,8">
-                                <TextBlock Text="📋" FontSize="18" Margin="0,0,12,0"/>
-                                <TextBlock Text="日志管理" FontSize="14" Foreground="#E5E7EB"/>
+                                <TextBlock Text="📱" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="连接设置" FontSize="14" Foreground="#E5E7EB"/>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <!-- 系统信息 -->
+                        <ListBoxItem Name="SystemInfoItem"
+                                     Background="Transparent"
+                                     Margin="5,2"
+                                     Tag="SystemInfo">
+                            <StackPanel Orientation="Horizontal" Margin="10,8">
+                                <TextBlock Text="ℹ️" FontSize="18" Margin="0,0,12,0"/>
+                                <TextBlock Text="系统信息" FontSize="14" Foreground="#E5E7EB"/>
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>

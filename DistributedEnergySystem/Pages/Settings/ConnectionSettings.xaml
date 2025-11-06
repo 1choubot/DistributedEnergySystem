@@ -1,0 +1,256 @@
+<UserControl x:Class="DistributedEnergySystem.Pages.Settings.ConnectionSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="700">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20">
+
+            <!-- 网络设置 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🌐 网络设置" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="WiFi网络" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="WifiToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="当前网络" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="CurrentNetworkText" Text="Industrial-Network" FontSize="14" Foreground="#10B981" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="IP地址" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="IpAddressText" Text="192.168.1.100" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="网络扫描" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="NetworkScanButton" Content="扫描网络"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="WiFi网络连接和配置" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 蓝牙设置 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="📶 蓝牙设置" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="蓝牙功能" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="BluetoothToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="设备名称" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="BluetoothDeviceText" Text="DES-5000-001" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="可见性" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="VisibilityToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="已配对设备" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="PairedDevicesButton" Content="管理设备"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="蓝牙设备连接和管理" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 通信协议 -->
+            <Border Background="#1F2937" CornerRadius="8" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="📡 通信协议" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Modbus TCP" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="ModbusTcpToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="端口设置" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="ModbusPortText" Text="502" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="OPC UA" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="OpcUaToggle" Content="关闭" IsChecked="False"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#374151" Foreground="#9CA3AF"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="协议配置" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <Button Name="ProtocolConfigButton" Content="高级配置"
+                                        Grid.Column="1" Width="80" Height="30"
+                                        Background="#6366F1" Foreground="White"
+                                        BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="工业通信协议配置" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 远程监控 -->
+            <Border Background="#1F2937" CornerRadius="8" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="🖥️ 远程监控" FontSize="16" FontWeight="SemiBold" Foreground="#E5E7EB" Margin="0,0,0,15"/>
+
+                    <Border Background="#374151" CornerRadius="6" Padding="15,12">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="远程访问" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="RemoteAccessToggle" Content="关闭" IsChecked="False"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#374151" Foreground="#9CA3AF"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="VNC端口" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="VncPortText" Text="5900" FontSize="14" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Web服务" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <ToggleButton Name="WebServiceToggle" Content="开启" IsChecked="True"
+                                            Grid.Column="1" Width="60" Height="30"
+                                            Background="#10B981" Foreground="White"
+                                            BorderThickness="0" Margin="20,0,0,0"/>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="连接状态" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Name="ConnectionStatusText" Text="等待连接" FontSize="14" Foreground="#F59E0B" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="远程访问和监控配置" FontSize="12" Foreground="#6B7280" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
