@@ -10,9 +10,19 @@ namespace DistributedEnergySystem.Pages
     /// </summary>
     public partial class SettingsPage : BasePage
     {
+        private string _navigationParameter;
+
         public SettingsPage()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 设置导航参数
+        /// </summary>
+        public void SetNavigationParameter(string parameter)
+        {
+            _navigationParameter = parameter;
         }
 
         /// <summary>
@@ -138,10 +148,32 @@ namespace DistributedEnergySystem.Pages
         {
             base.OnPageActivated();
 
-            // 默认选中第一个菜单项
-            if (SettingsMenu.Items.Count > 0)
+            // 如果有导航参数，选中对应的设置项
+            if (!string.IsNullOrEmpty(_navigationParameter))
             {
+                SelectSettingsByParameter(_navigationParameter);
+                _navigationParameter = null; // 清空参数，避免重复处理
+            }
+            else if (SettingsMenu.Items.Count > 0 && SettingsMenu.SelectedIndex < 0)
+            {
+                // 默认选中第一个菜单项
                 SettingsMenu.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// 根据参数选中对应的设置项
+        /// </summary>
+        private void SelectSettingsByParameter(string parameter)
+        {
+            // 遍历菜单项找到匹配的Tag
+            for (int i = 0; i < SettingsMenu.Items.Count; i++)
+            {
+                if (SettingsMenu.Items[i] is ListBoxItem item && item.Tag?.ToString() == parameter)
+                {
+                    SettingsMenu.SelectedIndex = i;
+                    break;
+                }
             }
         }
     }

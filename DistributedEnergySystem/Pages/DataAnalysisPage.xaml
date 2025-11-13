@@ -8,11 +8,151 @@
       d:DesignHeight="600" d:DesignWidth="1024"
       Title="数据分析">
 
+    <Page.Resources>
+        <!-- 工具栏按钮样式 -->
+        <Style x:Key="ToolbarButtonStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="#2D3748"/>
+            <Setter Property="Foreground" Value="#9CA3AF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#10B981"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 数据卡片样式 -->
+        <Style x:Key="DataCardStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#2D3748" Offset="0"/>
+                        <GradientStop Color="#1A202C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="#0F1419">
-        <TextBlock Text="数据分析页面"
-                   FontSize="24"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部工具栏 -->
+        <Border Grid.Row="0" Background="#1A202C" Padding="20,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 时间范围选择 -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="时间范围：" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <RadioButton Content="日" Style="{StaticResource ToolbarButtonStyle}" IsChecked="True" Margin="0,0,10,0"/>
+                    <RadioButton Content="月" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,10,0"/>
+                    <RadioButton Content="年" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,10,0"/>
+                    <RadioButton Content="总计" Style="{StaticResource ToolbarButtonStyle}"/>
+                </StackPanel>
+
+                <!-- 数据类型选择 -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="数据类型：" FontSize="14" Foreground="#9CA3AF" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox Width="150" Height="35" FontSize="13" SelectedIndex="0">
+                        <ComboBoxItem Content="全部数据"/>
+                        <ComboBoxItem Content="光伏发电"/>
+                        <ComboBoxItem Content="风力发电"/>
+                        <ComboBoxItem Content="储能系统"/>
+                        <ComboBoxItem Content="负载用电"/>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 图表展示区域 -->
+        <Border Grid.Row="1" Margin="20" Style="{StaticResource DataCardStyle}">
+            <Grid>
+                <!-- 图表占位区域 -->
+                <Border Background="#1A202C" CornerRadius="8" BorderBrush="#374151" BorderThickness="2">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="📊" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <TextBlock Text="图表展示区域" FontSize="18" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                        <TextBlock Text="(预留LiveCharts图表容器)" FontSize="12" Foreground="#4B5563" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- 底部数据摘要卡片 -->
+        <Grid Grid.Row="2" Margin="20,0,20,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 总发电量 -->
+            <Border Grid.Column="0" Style="{StaticResource DataCardStyle}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="总发电量" FontSize="12" Foreground="#9CA3AF"/>
+                    <TextBlock Text="1,234.5" FontSize="24" FontWeight="Bold" Foreground="#10B981" Margin="0,5,0,0"/>
+                    <TextBlock Text="kWh" FontSize="11" Foreground="#6B7280"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 总用电量 -->
+            <Border Grid.Column="1" Style="{StaticResource DataCardStyle}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="总用电量" FontSize="12" Foreground="#9CA3AF"/>
+                    <TextBlock Text="987.3" FontSize="24" FontWeight="Bold" Foreground="#3B82F6" Margin="0,5,0,0"/>
+                    <TextBlock Text="kWh" FontSize="11" Foreground="#6B7280"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 自用率 -->
+            <Border Grid.Column="2" Style="{StaticResource DataCardStyle}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="自用率" FontSize="12" Foreground="#9CA3AF"/>
+                    <TextBlock Text="79.9" FontSize="24" FontWeight="Bold" Foreground="#F59E0B" Margin="0,5,0,0"/>
+                    <TextBlock Text="%" FontSize="11" Foreground="#6B7280"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 并网电量 -->
+            <Border Grid.Column="3" Style="{StaticResource DataCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="并网电量" FontSize="12" Foreground="#9CA3AF"/>
+                    <TextBlock Text="247.2" FontSize="24" FontWeight="Bold" Foreground="#8B5CF6" Margin="0,5,0,0"/>
+                    <TextBlock Text="kWh" FontSize="11" Foreground="#6B7280"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </local:BasePage>

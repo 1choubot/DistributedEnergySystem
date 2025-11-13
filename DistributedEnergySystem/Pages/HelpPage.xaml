@@ -8,11 +8,102 @@
       d:DesignHeight="600" d:DesignWidth="1024"
       Title="帮助中心">
 
+    <Page.Resources>
+        <!-- 菜单项样式 -->
+        <Style x:Key="HelpMenuItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#9CA3AF"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="8"
+                                Margin="5">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#10B981"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="#0F1419">
-        <TextBlock Text="帮助中心页面"
-                   FontSize="24"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧帮助分类菜单 -->
+        <Border Grid.Column="0" Background="#1A202C" Padding="15">
+            <StackPanel>
+                <TextBlock Text="帮助分类" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,10,10,20"/>
+
+                <ListBox x:Name="HelpMenu" Background="Transparent" BorderThickness="0"
+                         ItemContainerStyle="{StaticResource HelpMenuItemStyle}"
+                         SelectionChanged="HelpMenu_SelectionChanged">
+                    <ListBoxItem Content="📖 快速入门" Tag="QuickStart" IsSelected="True"/>
+                    <ListBoxItem Content="📋 操作指南" Tag="UserGuide"/>
+                    <ListBoxItem Content="❓ 常见问题" Tag="FAQ"/>
+                    <ListBoxItem Content="🔧 故障排查" Tag="Troubleshooting"/>
+                    <ListBoxItem Content="📞 联系我们" Tag="Contact"/>
+                </ListBox>
+            </StackPanel>
+        </Border>
+
+        <!-- 右侧内容展示区域 -->
+        <Border Grid.Column="1" Background="#0F1419" Padding="30">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="ContentPanel">
+                    <!-- 快速入门内容 -->
+                    <TextBlock Text="快速入门" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="系统概述" FontSize="18" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" Foreground="#D1D5DB" LineHeight="22" Margin="0,0,0,20">
+                        本系统是一套分布式能源管理系统，用于监控和管理光伏发电、风力发电、储能系统、柴油发电机和并网输出等多种能源设备。系统提供实时数据监控、历史数据分析、设备控制和报警管理等功能。
+                    </TextBlock>
+
+                    <TextBlock Text="主要功能" FontSize="18" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="• 实时监控：查看各能源模块的实时运行数据" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 数据分析：统计和分析历史能源数据" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 系统设置：配置系统参数和用户偏好" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 运行记录：查看系统事件和操作日志" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 报警管理：接收和处理系统告警信息" FontSize="13" Foreground="#D1D5DB"/>
+                    </StackPanel>
+
+                    <TextBlock Text="界面导航" FontSize="18" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="• 系统总览：主页面，显示所有能源模块状态" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 数据分析：查看能源数据统计和趋势图表" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 系统设置：配置系统参数和连接设置" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 运行记录：查看历史事件和操作记录" FontSize="13" Foreground="#D1D5DB" Margin="0,0,0,8"/>
+                        <TextBlock Text="• 帮助中心：获取系统使用帮助和支持" FontSize="13" Foreground="#D1D5DB"/>
+                    </StackPanel>
+
+                    <TextBlock Text="快速操作" FontSize="18" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" Foreground="#D1D5DB" LineHeight="22" Margin="0,0,0,20">
+                        点击顶部状态栏的图标可以快速访问相关设置：网络图标跳转到连接设置，蓝牙图标跳转到连接设置，报警声音图标跳转到音频设置，通知图标跳转到运行记录。
+                    </TextBlock>
+
+                    <Border Background="#2D3748" CornerRadius="8" Padding="15" Margin="0,10,0,0">
+                        <StackPanel>
+                            <TextBlock Text="💡 提示" FontSize="14" FontWeight="Bold" Foreground="#F59E0B" Margin="0,0,0,8"/>
+                            <TextBlock Text="首次使用建议先查看操作指南，了解系统的基本操作流程。如遇到问题，请查看常见问题或联系技术支持。"
+                                       TextWrapping="Wrap" FontSize="12" Foreground="#D1D5DB" LineHeight="20"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </local:BasePage>

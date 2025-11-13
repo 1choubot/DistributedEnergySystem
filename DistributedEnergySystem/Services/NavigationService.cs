@@ -86,6 +86,12 @@ namespace DistributedEnergySystem.Services
 
                 if (page != null)
                 {
+                    // 如果是SettingsPage且有参数，设置导航参数
+                    if (page is Pages.SettingsPage settingsPage && parameter is string settingType)
+                    {
+                        settingsPage.SetNavigationParameter(settingType);
+                    }
+
                     // 记录导航历史
                     if (_mainFrame.Content != null)
                     {
@@ -93,7 +99,7 @@ namespace DistributedEnergySystem.Services
                     }
 
                     // 执行导航
-                    _mainFrame.Navigate(page, parameter);
+                    _mainFrame.Navigate(page);
                     return true;
                 }
             }

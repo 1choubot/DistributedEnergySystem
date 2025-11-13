@@ -8,11 +8,193 @@
       d:DesignHeight="600" d:DesignWidth="1024"
       Title="运行记录">
 
+    <Page.Resources>
+        <!-- 筛选按钮样式 -->
+        <Style x:Key="FilterButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="#2D3748"/>
+            <Setter Property="Foreground" Value="#9CA3AF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#10B981"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="#0F1419">
-        <TextBlock Text="运行记录页面"
-                   FontSize="24"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部筛选工具栏 -->
+        <Border Grid.Row="0" Background="#1A202C" Padding="20,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 事件类型筛选 -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="事件类型：" FontSize="13" Foreground="#9CA3AF" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <ToggleButton Content="全部" Style="{StaticResource FilterButtonStyle}" IsChecked="True" Margin="0,0,8,0"/>
+                    <ToggleButton Content="故障" Style="{StaticResource FilterButtonStyle}" Margin="0,0,8,0"/>
+                    <ToggleButton Content="告警" Style="{StaticResource FilterButtonStyle}" Margin="0,0,8,0"/>
+                    <ToggleButton Content="操作" Style="{StaticResource FilterButtonStyle}"/>
+                </StackPanel>
+
+                <!-- 日期筛选 -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="日期：" FontSize="13" Foreground="#9CA3AF" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <DatePicker Width="140" Height="32" FontSize="12"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 记录列表区域 -->
+        <Border Grid.Row="1" Margin="20" Background="#1A202C" CornerRadius="12">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- 表头 -->
+                    <Border Background="#2D3748" Padding="15,10" CornerRadius="12,12,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="时间" FontSize="12" FontWeight="Bold" Foreground="#9CA3AF"/>
+                            <TextBlock Grid.Column="1" Text="类型" FontSize="12" FontWeight="Bold" Foreground="#9CA3AF"/>
+                            <TextBlock Grid.Column="2" Text="内容" FontSize="12" FontWeight="Bold" Foreground="#9CA3AF"/>
+                            <TextBlock Grid.Column="3" Text="状态" FontSize="12" FontWeight="Bold" Foreground="#9CA3AF"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- 记录项示例 -->
+                    <Border BorderBrush="#374151" BorderThickness="0,0,0,1" Padding="15,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="2025-11-13 14:23:15" FontSize="12" Foreground="#E5E7EB"/>
+                            <Border Grid.Column="1" Background="#EF4444" CornerRadius="4" Padding="8,3" HorizontalAlignment="Left">
+                                <TextBlock Text="故障" FontSize="11" Foreground="White"/>
+                            </Border>
+                            <TextBlock Grid.Column="2" Text="电池温度过高，当前温度：52°C" FontSize="12" Foreground="#E5E7EB"/>
+                            <TextBlock Grid.Column="3" Text="已处理" FontSize="12" Foreground="#10B981"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="#374151" BorderThickness="0,0,0,1" Padding="15,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="2025-11-13 13:45:32" FontSize="12" Foreground="#E5E7EB"/>
+                            <Border Grid.Column="1" Background="#F59E0B" CornerRadius="4" Padding="8,3" HorizontalAlignment="Left">
+                                <TextBlock Text="告警" FontSize="11" Foreground="White"/>
+                            </Border>
+                            <TextBlock Grid.Column="2" Text="电压波动异常，当前电压：395V" FontSize="12" Foreground="#E5E7EB"/>
+                            <TextBlock Grid.Column="3" Text="处理中" FontSize="12" Foreground="#F59E0B"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="#374151" BorderThickness="0,0,0,1" Padding="15,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="2025-11-13 12:18:47" FontSize="12" Foreground="#E5E7EB"/>
+                            <Border Grid.Column="1" Background="#3B82F6" CornerRadius="4" Padding="8,3" HorizontalAlignment="Left">
+                                <TextBlock Text="操作" FontSize="11" Foreground="White"/>
+                            </Border>
+                            <TextBlock Grid.Column="2" Text="用户修改系统设置：背光亮度调整为80%" FontSize="12" Foreground="#E5E7EB"/>
+                            <TextBlock Grid.Column="3" Text="完成" FontSize="12" Foreground="#10B981"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="#374151" BorderThickness="0,0,0,1" Padding="15,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="2025-11-12 23:56:12" FontSize="12" Foreground="#E5E7EB"/>
+                            <Border Grid.Column="1" Background="#F59E0B" CornerRadius="4" Padding="8,3" HorizontalAlignment="Left">
+                                <TextBlock Text="告警" FontSize="11" Foreground="White"/>
+                            </Border>
+                            <TextBlock Grid.Column="2" Text="光伏发电功率下降，当前功率：2.3kW" FontSize="12" Foreground="#E5E7EB"/>
+                            <TextBlock Grid.Column="3" Text="已处理" FontSize="12" Foreground="#10B981"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="#374151" BorderThickness="0,0,0,1" Padding="15,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="2025-11-12 18:32:05" FontSize="12" Foreground="#E5E7EB"/>
+                            <Border Grid.Column="1" Background="#3B82F6" CornerRadius="4" Padding="8,3" HorizontalAlignment="Left">
+                                <TextBlock Text="操作" FontSize="11" Foreground="White"/>
+                            </Border>
+                            <TextBlock Grid.Column="2" Text="系统启动，所有模块初始化完成" FontSize="12" Foreground="#E5E7EB"/>
+                            <TextBlock Grid.Column="3" Text="完成" FontSize="12" Foreground="#10B981"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- 更多记录占位 -->
+                    <Border Padding="20" Margin="0,20,0,0">
+                        <TextBlock Text="..." FontSize="14" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- 底部分页控件 -->
+        <Border Grid.Row="2" Background="#1A202C" Padding="20,15">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="上一页" Width="80" Height="32" Margin="0,0,15,0"
+                        Background="#2D3748" Foreground="#9CA3AF" BorderThickness="0"
+                        FontSize="12" Cursor="Hand"/>
+                <TextBlock Text="1 / 10" FontSize="13" Foreground="#E5E7EB" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <Button Content="下一页" Width="80" Height="32"
+                        Background="#2D3748" Foreground="#9CA3AF" BorderThickness="0"
+                        FontSize="12" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </local:BasePage>

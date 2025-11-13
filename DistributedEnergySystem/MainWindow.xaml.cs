@@ -93,5 +93,101 @@ namespace DistributedEnergySystem
                 Services.NavigationService.Instance.NavigateTo(pageKey);
             }
         }
+
+        /// <summary>
+        /// 状态栏图标点击事件 - 报警声音
+        /// </summary>
+        private void AlarmSoundButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 跳转到设置页面的音频设置
+            NavigateToSettings("AudioSettings");
+        }
+
+        /// <summary>
+        /// 状态栏图标点击事件 - 系统通知
+        /// </summary>
+        private void NotificationButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 跳转到运行记录页面
+            NavigateToPage("RunRecords");
+        }
+
+        /// <summary>
+        /// 状态栏图标点击事件 - 网络连接
+        /// </summary>
+        private void NetworkButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 跳转到设置页面的连接设置
+            NavigateToSettings("ConnectionSettings");
+        }
+
+        /// <summary>
+        /// 状态栏图标点击事件 - 蓝牙设置
+        /// </summary>
+        private void BluetoothButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 跳转到设置页面的连接设置
+            NavigateToSettings("ConnectionSettings");
+        }
+
+        /// <summary>
+        /// 状态栏图标点击事件 - 4G连接
+        /// </summary>
+        private void FourGButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 跳转到设置页面的连接设置
+            NavigateToSettings("ConnectionSettings");
+        }
+
+        /// <summary>
+        /// 导航到设置页面并选中指定子模块
+        /// </summary>
+        private void NavigateToSettings(string settingType)
+        {
+            // 更新导航按钮状态
+            UpdateNavigationButtonState("Settings");
+
+            // 导航到设置页面并传递参数
+            Services.NavigationService.Instance.NavigateTo("Settings", settingType);
+        }
+
+        /// <summary>
+        /// 导航到指定页面
+        /// </summary>
+        private void NavigateToPage(string pageKey)
+        {
+            // 更新导航按钮状态
+            UpdateNavigationButtonState(pageKey);
+
+            // 导航到目标页面
+            Services.NavigationService.Instance.NavigateTo(pageKey);
+        }
+
+        /// <summary>
+        /// 更新导航按钮状态
+        /// </summary>
+        private void UpdateNavigationButtonState(string activePageKey)
+        {
+            // 更新Window的Tag
+            this.Tag = activePageKey;
+
+            // 查找所有导航按钮并重置样式
+            var navButtons = new Button[] { HomeButton, DataAnalysisButton, SettingsButton, RunRecordsButton, HelpButton };
+
+            foreach (var navButton in navButtons)
+            {
+                if (navButton != null)
+                {
+                    if (navButton.Tag?.ToString() == activePageKey)
+                    {
+                        navButton.Style = (Style)FindResource("ActiveNavButtonStyle");
+                    }
+                    else
+                    {
+                        navButton.Style = (Style)FindResource("NavButtonStyle");
+                    }
+                }
+            }
+        }
     }
 }

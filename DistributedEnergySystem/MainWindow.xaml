@@ -641,6 +641,22 @@
                 </Path.Data>
             </Path>
         </Canvas>
+
+        <!-- 4G图标 -->
+        <Canvas x:Key="FourGIcon" Width="32" Height="32">
+            <!-- 背景圆 -->
+            <Ellipse Stroke="#10B981" StrokeThickness="2" Fill="#10B981" Opacity="0.1" Width="28" Height="28" Canvas.Left="2" Canvas.Top="2"/>
+            <!-- 4G文字 -->
+            <TextBlock Text="4G" FontSize="12" FontWeight="Bold" Foreground="#10B981" Canvas.Left="8" Canvas.Top="10"/>
+            <!-- 信号波纹 -->
+            <Path Stroke="#10B981" StrokeThickness="1.5" Fill="Transparent">
+                <Path.Data>
+                    <PathGeometry>
+                        M22 12 Q26 16 22 20
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
     </Window.Resources>
 
     <Grid Background="{StaticResource BackgroundGradient}">
@@ -690,7 +706,7 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,30,0">
                     <!-- 系统通知 -->
                     <Grid Margin="5,0">
-                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="系统通知">
+                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="系统通知" Click="NotificationButton_Click">
                             <ContentControl Content="{StaticResource NotificationIcon}"/>
                         </Button>
                         <!-- 未读消息数 -->
@@ -706,18 +722,23 @@
                     <Border Width="1" Height="30" Background="#374151" Margin="10,0"/>
 
                     <!-- 网络连接 -->
-                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="网络连接" Margin="5,0">
+                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="网络连接" Margin="5,0" Click="NetworkButton_Click">
                         <ContentControl Content="{StaticResource NetworkIcon}"/>
                     </Button>
 
+                    <!-- 4G连接 -->
+                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="4G连接" Margin="5,0" Click="FourGButton_Click">
+                        <ContentControl Content="{StaticResource FourGIcon}"/>
+                    </Button>
+
                     <!-- 蓝牙设置 -->
-                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="蓝牙设置" Margin="5,0">
+                    <Button Style="{StaticResource StatusButtonStyle}" ToolTip="蓝牙设置" Margin="5,0" Click="BluetoothButton_Click">
                         <ContentControl Content="{StaticResource BluetoothIcon}"/>
                     </Button>
 
                     <!-- 报警声音 -->
                     <Grid Margin="5,0">
-                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="报警声音">
+                        <Button Style="{StaticResource StatusButtonStyle}" ToolTip="报警声音" Click="AlarmSoundButton_Click">
                             <ContentControl Content="{StaticResource AlarmSoundIcon}"/>
                         </Button>
                         <!-- 警告提示 -->
